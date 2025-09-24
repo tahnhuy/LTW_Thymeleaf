@@ -8,7 +8,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        return "redirect:/admin/categories";
+        return "redirect:/admin/ajax-demo";
     }
 }
 

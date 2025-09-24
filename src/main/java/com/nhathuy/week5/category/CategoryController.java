@@ -27,7 +27,7 @@ public class CategoryController {
                        @RequestParam(value = "page", defaultValue = "0") int page,
                        @RequestParam(value = "size", defaultValue = "10") int size) {
         System.out.println("[WEB] GET /admin/categories q=" + q + ", page=" + page + ", size=" + size);
-        Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
+        Pageable pageable = PageRequest.of(page, size, Sort.by("categoryId").descending());
         Page<Category> result = service.search(q, pageable);
         
         StringBuilder html = new StringBuilder();
@@ -35,13 +35,13 @@ public class CategoryController {
         html.append("<h1>Categories (" + result.getTotalElements() + ")</h1>");
         html.append("<a href='/admin/categories/create'>Create New</a><br><br>");
         
-        html.append("<table border='1'><tr><th>ID</th><th>Name</th><th>Slug</th><th>Active</th><th>Actions</th></tr>");
+        html.append("<table border='1'><tr><th>ID</th><th>Category Name</th><th>Icon</th><th>Created At</th><th>Actions</th></tr>");
         for (Category c : result.getContent()) {
             html.append("<tr>");
             html.append("<td>").append(c.getId()).append("</td>");
-            html.append("<td>").append(c.getName()).append("</td>");
-            html.append("<td>").append(c.getSlug()).append("</td>");
-            html.append("<td>").append(c.getActive() ? "Yes" : "No").append("</td>");
+            html.append("<td>").append(c.getCategoryName() != null ? c.getCategoryName() : "").append("</td>");
+            html.append("<td>").append(c.getIcon() != null ? c.getIcon() : "No icon").append("</td>");
+            html.append("<td>").append(c.getCreatedAt() != null ? c.getCreatedAt().toString() : "").append("</td>");
             html.append("<td>");
             html.append("<a href='/admin/categories/").append(c.getId()).append("/edit'>Edit</a> | ");
             html.append("<form style='display:inline' method='post' action='/admin/categories/").append(c.getId()).append("/delete'>");
