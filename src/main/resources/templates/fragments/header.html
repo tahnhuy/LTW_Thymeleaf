@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="header">
+    <header class="container py-3 d-flex align-items-center gap-3">
+        <img class="avatar" th:src="@{/img/me.jpg}" alt="Nguyễn Nhật Huy"
+             style="width:56px;height:56px;border-radius:50%;object-fit:cover;border:1px solid #ddd;">
+        <div>
+            <h5 class="mb-0">Quản trị Category</h5>
+            <small class="text-muted">Spring Boot • Thymeleaf</small>
+        </div>
+    </header>
+    <hr class="mt-0"/>
+    
+    <!-- Optional notice card -->
+    <div class="container mb-3">
+        <div class="alert alert-light border d-flex align-items-center gap-2 mb-0" role="alert">
+            <i class="fas fa-user-graduate text-primary"></i>
+            <div>
+                Sinh viên: <b>Nguyễn Nhật Huy</b> — MSSV: <b>23110226</b>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+

@@ -49,6 +49,7 @@
     </style>
 </head>
 <body>
+    <div th:replace="~{fragments/header :: header}"></div>
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
@@ -139,6 +140,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Footer fragment -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
 
     <!-- Toast container -->
     <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastContainer">
